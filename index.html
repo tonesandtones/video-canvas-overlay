@@ -9,23 +9,21 @@
 <!--
 Adapted from https://github.com/webrtc/samples/tree/gh-pages/src/content/capture/video-video
 -->
-<html>
+<html lang="en-AU">
 <head>
 
     <meta charset="utf-8">
-    <meta name="description" content="WebRTC code samples">
+    <meta name="description" content="Tones WAPOL code samples">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-    <meta itemprop="description" content="Client-side WebRTC code samples">
-    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-    <meta itemprop="name" content="WebRTC code samples">
+    <meta itemprop="description" content="Tones WAPOL code samples">
+    <meta itemprop="name" content="Tones WAPOL code samples">
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#ffffff">
 
     <base target="_blank">
 
-    <title>captureStream(): video to video</title>
+    <title>Video to canvas with text overlay</title>
 
-    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/main.css"/>
@@ -36,26 +34,33 @@ Adapted from https://github.com/webrtc/samples/tree/gh-pages/src/content/capture
 
 <div id="container">
 
-    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a> <span>captureStream(): video to video</span>
+    <h1><span>Video to canvas with text overlay</span>
     </h1>
 
-    <video id="leftVideo" playsinline controls loop muted>
-        <source src="video/chrome.webm" type="video/webm"/>
-        <source src="video/chrome.mp4" type="video/mp4"/>
-        <p>This browser does not support the video element.</p>
-    </video>
+    <button id="play-pause" type="button">Play/Pause</button>
 
-    <video id="rightVideo" playsinline autoplay muted></video>
+<!--    <video id="leftVideo" playsinline controls loop muted>-->
+<!--        <source src="video/chrome.webm" type="video/webm"/>-->
+<!--        <source src="video/chrome.mp4" type="video/mp4"/>-->
+<!--        <p>This browser does not support the video element.</p>-->
+<!--    </video>-->
 
-    <p>Press play on the left video to start the demo.</p>
+    <canvas id="videoCanvas" style="display: block"></canvas>
 
-    <p>A stream is captured from the video element on the left using its <code>captureStream()</code> method and set as
-        the <code>srcObject</code> of the video element on the right.</p>
+    <p>Press Play/Pause to start the demo.</p>
 
-    <p>The <code>stream</code> variable are in global scope, so you can inspect them from the browser console.</p>
+    <p>A <code>&lt;canvas&gt;</code> element is displayed on the central part of the screen.
+        A <code>&lt;video&gt;</code> element is dynamically created in the DOM to play a sample video. The <code>&lt;video&gt;</code> is not rendered to the screen.</p>
+    
+    <p>On each repaint, the current frame from the video is painted to the canvas and the current timestamp is drawn over the top of the video frame.</p>
 
-    <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/capture/video-video"
-       title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    <p>All the key DOM elements are in in global scope, so you can inspect them from the browser console.</p>
+    <ul>
+        <li><code>video</code> - the offscreen video element.</li>
+        <li><code>videoCanvas</code> - the canvas in the main part of the screen, to which the video frames and timestamp text are painted.</li>
+        <li><code>canvasCtx</code> - the canvas context used for drawing.</li>
+        <li><code>playPause</code> - the Play/Pause button DOM element.</li>
+    </ul>
 
 </div>
 
