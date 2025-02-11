@@ -6,3 +6,7 @@ A demo app showing an offscreen video element being drawn to an onscreen canvas 
 * Open index.html in your browser
 
 ![index.png](index.png)
+
+## Demo
+
+[demo.mp4](demo.mp4)
