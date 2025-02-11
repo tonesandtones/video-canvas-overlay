@@ -9,4 +9,4 @@ A demo app showing an offscreen video element being drawn to an onscreen canvas 
 
 ## Demo
 
-<video src="https://github.com/tonesandtones/video-canvas-overlay/raw/refs/heads/main/demo.mp4"></video>
+https://github.com/tonesandtones/video-canvas-overlay/raw/refs/heads/main/demo.mp4
